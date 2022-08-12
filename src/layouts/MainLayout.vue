@@ -61,8 +61,16 @@
       class="flex no-wrap column"
     >
       <q-list separator>
-        <q-item class="q-pa-none" tag="a" :href="`/#/all/${classify}`">
-          <q-avatar font-size="16px" class="q-ma-sm">ALL</q-avatar>
+        <q-item
+          class="q-pa-none bg-green-02"
+          tag="a"
+          :href="`/#/all/${classify}`"
+        >
+          <q-avatar
+            font-size="16px"
+            class="q-mr-sm q-my-sm wallet-num wallet-all"
+            >ALL</q-avatar
+          >
           <q-separator vertical></q-separator>
           <q-item-section class="q-pa-sm">
             <q-item-label class="justify-between flex q-px-md">
@@ -95,6 +103,7 @@
               v-if="wallet.name.includes(searchText) || searchText === ''"
               :num="index + 1"
               :classify="classify"
+              :currentNum="walletNum"
               v-bind="wallet"
             />
           </template>

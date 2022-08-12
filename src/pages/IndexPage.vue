@@ -77,13 +77,3 @@ const meta = ref<Meta>({
   totalCount: 1200,
 });
 </script>
-
-<style>
-.fit-main {
-  height: calc(100vh - 173px);
-  overflow-y: auto;
-}
-.bg-transparent {
-  background: transparent;
-}
-</style>
