@@ -309,11 +309,4 @@ onUpdated(() => {
     walletNum.value = params.walletnum.toString();
   }
 });
-
-// function toggleLeftDrawer() {
-//   leftDrawerOpen.value = !leftDrawerOpen.value;
-// }
-// function toggleRightDrawer() {
-//   rightDrawerOpen.value = !rightDrawerOpen.value;
-// }
 </script>
