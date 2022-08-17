@@ -30,7 +30,7 @@
       <q-scroll-area class="fit">
         <q-list bordered class="rounded-borders">
           <q-expansion-item
-            v-for="nft in nfts"
+            v-for="nft in wallets"
             :key="`nft-${nft.tx_hash}`"
             expand-separator
             :label="nft.asset_list[0].policy_id"
@@ -42,6 +42,7 @@
               expand-separator
             >
               <template v-slot:header>
+                <q-checkbox v-model="store.selections" :val="asset" />
                 <q-item-section avatar>
                   <q-avatar>1</q-avatar>
                 </q-item-section>
@@ -51,9 +52,7 @@
                   <q-item-label caption>{{
                     route.params.classify?.toString()
                   }}</q-item-label>
-                  <q-item-label caption>{{
-                    route.params.walletnum.toString()
-                  }}</q-item-label>
+                  <q-item-label caption>{{ data.name }}</q-item-label>
                 </q-item-section>
 
                 <q-item-section side> {{ asset.quantity }}x </q-item-section>
@@ -105,40 +104,24 @@
 
 <script setup lang="ts">
 import { mockupData } from 'components/models';
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { useTransactionStore } from 'stores/transactions';
 
 const route = useRoute();
-const nfts = mockupData[0].utxo_set;
+const data = mockupData[0];
 const searchText = ref('');
-// const nfts = ref<Nft[]>([
-//   {
-//     id: 1,
-//     img: '/img/nft.png',
-//   },
-//   {
-//     id: 2,
-//     img: '/img/nft.png',
-//   },
-//   {
-//     id: 3,
-//     img: '/img/nft.png',
-//   },
-//   {
-//     id: 4,
-//     img: '/img/nft.png',
-//   },
-//   {
-//     id: 5,
-//     img: '/img/nft.png',
-//   },
-//   {
-//     id: 6,
-//     img: '/img/nft.png',
-//   },
-//   {
-//     id: 7,
-//     img: '/img/nft.png',
-//   },
-// ]);
+const selections = ref([]);
+const store = useTransactionStore();
+const wallets = computed(() => {
+  return data.utxo_set.map((x) => {
+    return {
+      ...x,
+      asset_list: x.asset_list.map((y) => ({ ...y, walletName: data.name })),
+    };
+  });
+});
+watch(selections, () => {
+  console.log(selections);
+});
 </script>

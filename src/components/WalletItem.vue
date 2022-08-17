@@ -56,7 +56,7 @@ withDefaults(defineProps<props>(), {
   link: '#',
   icon: '',
   num: 0,
-  classify: 'nft',
+  classify: 'assets',
   currentNum: '1',
 });
 

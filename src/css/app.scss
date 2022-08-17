@@ -35,6 +35,16 @@
     border-color: black;
   }
 }
+.wallet-text {
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  width: 150px;
+  text-overflow: ellipsis;
+}
+.number-input {
+  border: none;
+  outline: none;
+}
 .q-separator {
   background: rgba(0, 0, 0, 0.4);
 }

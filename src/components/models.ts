@@ -55,6 +55,7 @@ export type TypeAssetList = {
     rarity_rank: number;
     rarity_score: number;
   };
+  walletName?: string;
 };
 
 export type TypeNftData = {
