@@ -29,15 +29,18 @@
 </template>
 
 <script setup lang="ts">
-import { onUpdated, ref } from 'vue';
+import { onMounted, onUpdated, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import TopBar from '../components/TopBar.vue';
 import TransactionBox from 'src/components/TransactionBox.vue';
 import WalletBox from 'src/components/WalletBox.vue';
 import FooterBar from 'src/components/FooterBar.vue';
+import { useTransactionStore } from 'src/stores/transactions';
+
 // import { date } from 'quasar';
 
 const route = useRoute();
+const store = useTransactionStore();
 
 const walletNum = ref('1');
 const classify = ref('assets');
@@ -45,11 +48,16 @@ const classify = ref('assets');
 const leftDrawerOpen = ref(true);
 const rightDrawerOpen = ref(true);
 
-onUpdated(() => {
+const getParams = () => {
   const params = route.params;
   if (params.walletnum && params.classify) {
     classify.value = params.classify.toString();
     walletNum.value = params.walletnum.toString();
   }
-});
+  store.clearSelection();
+};
+
+onMounted(getParams);
+
+onUpdated(getParams);
 </script>

@@ -1,9 +1,9 @@
 <template>
   <q-list bordered separator class="full-height flex column no-wrap">
-    <q-item class="flex justify-center items-center" style="min-height: 64px">
+    <q-item class="flex justify-center items-center" style="min-height: 63px">
       <q-item-label header> TRANSACTION </q-item-label>
     </q-item>
-    <q-item class="q-pa-none" style="min-height: 56px">
+    <q-item class="q-pa-none" style="min-height: 57px">
       <q-tabs
         v-model="tab"
         no-caps

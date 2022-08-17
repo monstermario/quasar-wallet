@@ -74,7 +74,139 @@ export type TypeMockupData = {
   utxo_set: TypeNftData[];
 };
 
+export interface walletProps {
+  name: string;
+  address: string;
+  qty: number;
+  usd: number;
+}
+
+export const wallets: walletProps[] = [
+  {
+    name: 'Wallet1',
+    address: '0x93c5fe5242697aee0c5059dDD36034390E6A494b',
+    qty: 10,
+    usd: 10,
+  },
+  {
+    name: 'Wallet2',
+    address: '0x93c5fe5242697aee0c5059dDD36034390E6A4941',
+    qty: 15,
+    usd: 50,
+  },
+  {
+    name: 'Wallet3',
+    address: '0x93c5fe5242697aee0c5059dDD36034390E6A4942',
+    qty: 10,
+    usd: 20,
+  },
+  {
+    name: 'Wallet4',
+    address: '0x93c5fe5242697aee0c5059dDD36034390E6A4943',
+    qty: 30,
+    usd: 30,
+  },
+  {
+    name: 'Wallet5',
+    address: '0x93c5fe5242697aee0c5059dDD36034390E6A4944',
+    qty: 20,
+    usd: 40,
+  },
+  {
+    name: 'Wallet6',
+    address: '0x93c5fe5242697awe0c5059dDD36034390E6A4944',
+    qty: 20,
+    usd: 40,
+  },
+  {
+    name: 'Wallet7',
+    address: '0x93c5fe5242697aee0c5059eDD36034390E6A4944',
+    qty: 20,
+    usd: 40,
+  },
+  {
+    name: 'Wallet8',
+    address: '0x93c5fe5242697aee0c5059dDD36023390E6A4944',
+    qty: 20,
+    usd: 40,
+  },
+  {
+    name: 'Wallet9',
+    address: '0x93c5fe5242697aee0c5219dDD36034390E6A4944',
+    qty: 20,
+    usd: 40,
+  },
+  {
+    name: 'Wallet10',
+    address: '0x93c5f32242697aee0c5059dDD36034390E6A4944',
+    qty: 20,
+    usd: 40,
+  },
+  {
+    name: 'Wallet11',
+    address: '0x93c5fe5233697aee0c5059dDD36034390E6A4944',
+    qty: 20,
+    usd: 40,
+  },
+  {
+    name: 'Wallet12',
+    address: '0x93c5fe5242697aee0c50544DD36034390E6A4944',
+    qty: 20,
+    usd: 40,
+  },
+  {
+    name: 'Wallet13',
+    address: '0x93c5fe5242697aee0c505955D36034390E6A4944',
+    qty: 20,
+    usd: 40,
+  },
+];
+
 export const mockupData: TypeMockupData[] = [
+  {
+    id: 3,
+    balance: 4241286,
+    name: 'Wallet2',
+    utxo_set: [
+      {
+        tx_hash:
+          'd4f0b856abb6a84d71b20782f3c46605f7e95c1d94c41a2870d333c906a5d8d6',
+        tx_index: 0,
+        block_height: 7615685,
+        block_time: '2022-08-12T05:15:57',
+        value: '1344798',
+        datum_hash: null,
+        asset_list: [
+          {
+            policy_id:
+              '22ada3728e23391244a28cf51a2658bb333ab43908354888888390e2',
+            asset_name: 'asset1',
+            quantity: '1',
+            data: {
+              last_metadata: {
+                Production: [
+                  'StreetArtsCNFT/STONKS_BR',
+                  'https://www.streetarts.com.br/',
+                  'Minted by Fred',
+                  'Stake Pool [TAILS]',
+                  'https://www.metromermaids.com/',
+                ],
+                Rarity: 'Common',
+                Twitter: 'https://twitter.com/kevyink',
+                copyright: 'Copyright: Kevy.ink',
+                image: 'ipfs://QmcWCEwtHCL862eF9MLXJJkxYzqyiUcvR1FtS3p7BW8kCD',
+                name: 'Doge 09',
+              },
+              statistical_rank: 2,
+              statistical_score: 0.6666666666666666,
+              rarity_rank: 2,
+              rarity_score: 5.5,
+            },
+          },
+        ],
+      },
+    ],
+  },
   {
     id: 3,
     balance: 4241286,

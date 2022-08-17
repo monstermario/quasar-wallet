@@ -33,7 +33,10 @@
     <q-list separator>
       <template v-for="(wallet, index) in wallets" :key="wallet.address">
         <WalletItem
-          v-if="wallet.name.includes(searchText) || searchText === ''"
+          v-if="
+            wallet.name.toLowerCase().includes(searchText.toLowerCase()) ||
+            searchText === ''
+          "
           :num="index + 1"
           :classify="classify"
           :currentNum="walletNum"
@@ -54,89 +57,9 @@
 </template>
 
 <script setup lang="ts">
-import WalletItem, { walletProps } from 'components/WalletItem.vue';
+import WalletItem from 'components/WalletItem.vue';
 import { ref } from 'vue';
-
-const wallets: walletProps[] = [
-  {
-    name: 'Wallet1',
-    address: '0x93c5fe5242697aee0c5059dDD36034390E6A494b',
-    qty: 10,
-    usd: 10,
-  },
-  {
-    name: 'Wallet2',
-    address: '0x93c5fe5242697aee0c5059dDD36034390E6A4941',
-    qty: 15,
-    usd: 50,
-  },
-  {
-    name: 'Wallet3',
-    address: '0x93c5fe5242697aee0c5059dDD36034390E6A4942',
-    qty: 10,
-    usd: 20,
-  },
-  {
-    name: 'Wallet4',
-    address: '0x93c5fe5242697aee0c5059dDD36034390E6A4943',
-    qty: 30,
-    usd: 30,
-  },
-  {
-    name: 'Wallet5',
-    address: '0x93c5fe5242697aee0c5059dDD36034390E6A4944',
-    qty: 20,
-    usd: 40,
-  },
-  {
-    name: 'Wallet6',
-    address: '0x93c5fe5242697awe0c5059dDD36034390E6A4944',
-    qty: 20,
-    usd: 40,
-  },
-  {
-    name: 'Wallet7',
-    address: '0x93c5fe5242697aee0c5059eDD36034390E6A4944',
-    qty: 20,
-    usd: 40,
-  },
-  {
-    name: 'Wallet8',
-    address: '0x93c5fe5242697aee0c5059dDD36023390E6A4944',
-    qty: 20,
-    usd: 40,
-  },
-  {
-    name: 'Wallet9',
-    address: '0x93c5fe5242697aee0c5219dDD36034390E6A4944',
-    qty: 20,
-    usd: 40,
-  },
-  {
-    name: 'Wallet10',
-    address: '0x93c5f32242697aee0c5059dDD36034390E6A4944',
-    qty: 20,
-    usd: 40,
-  },
-  {
-    name: 'Wallet11',
-    address: '0x93c5fe5233697aee0c5059dDD36034390E6A4944',
-    qty: 20,
-    usd: 40,
-  },
-  {
-    name: 'Wallet12',
-    address: '0x93c5fe5242697aee0c50544DD36034390E6A4944',
-    qty: 20,
-    usd: 40,
-  },
-  {
-    name: 'Wallet13',
-    address: '0x93c5fe5242697aee0c505955D36034390E6A4944',
-    qty: 20,
-    usd: 40,
-  },
-];
+import { wallets } from './models';
 
 const searchText = ref('');
 

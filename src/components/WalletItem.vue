@@ -14,7 +14,7 @@
       font-size="16px"
       class="q-mr-sm q-my-sm wallet-num"
       :style="{ background: color }"
-      >{{ num }}</q-avatar
+      >{{ currentNum }}</q-avatar
     >
     <!-- <q-separator vertical></q-separator> -->
     <q-item-section class="q-pa-sm">
@@ -36,12 +36,6 @@ import randomColor from 'randomColor';
 import { computed } from 'vue';
 import { useQuasar } from 'quasar';
 
-export interface walletProps {
-  name: string;
-  address: string;
-  qty: number;
-  usd: number;
-}
 interface props {
   name: string;
   address: string;
@@ -59,7 +53,6 @@ withDefaults(defineProps<props>(), {
   classify: 'assets',
   currentNum: '1',
 });
-
 const $q = useQuasar();
 
 const color = computed(() => {

@@ -28,12 +28,13 @@
     <q-separator></q-separator>
     <div class="fit-main">
       <q-scroll-area class="fit">
-        <q-list bordered class="rounded-borders">
+        <q-list bordered>
           <q-expansion-item
-            v-for="nft in wallets"
+            v-for="nft in walletList"
             :key="`nft-${nft.tx_hash}`"
             expand-separator
             :label="nft.asset_list[0].policy_id"
+            default-opened
           >
             <q-separator></q-separator>
             <q-expansion-item
@@ -52,7 +53,7 @@
                   <q-item-label caption>{{
                     route.params.classify?.toString()
                   }}</q-item-label>
-                  <q-item-label caption>{{ data.name }}</q-item-label>
+                  <q-item-label caption>{{ asset.walletName }}</q-item-label>
                 </q-item-section>
 
                 <q-item-section side> {{ asset.quantity }}x </q-item-section>
@@ -103,25 +104,47 @@
 </template>
 
 <script setup lang="ts">
-import { mockupData } from 'components/models';
-import { computed, ref, watch } from 'vue';
+import { mockupData, wallets } from 'components/models';
+import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useTransactionStore } from 'stores/transactions';
+import { I } from 'app/dist/spa/assets/index.2f66a829';
 
 const route = useRoute();
-const data = mockupData[0];
+// const data = mockupData[0];
 const searchText = ref('');
-const selections = ref([]);
 const store = useTransactionStore();
-const wallets = computed(() => {
-  return data.utxo_set.map((x) => {
-    return {
-      ...x,
-      asset_list: x.asset_list.map((y) => ({ ...y, walletName: data.name })),
-    };
-  });
-});
-watch(selections, () => {
-  console.log(selections);
+const walletList = computed(() => {
+  let data: any = [];
+  for (let i = 0; i < mockupData.length; i++) {
+    if (
+      route.params.walletnum === 'all' ||
+      (route.params.walletnum &&
+        mockupData[i].name === wallets[Number(route.params.walletnum) - 1].name)
+    ) {
+      mockupData[i].utxo_set
+        .filter(
+          (x) =>
+            searchText.value === '' ||
+            x.asset_list[0].asset_name
+              .toLowerCase()
+              .includes(searchText.value.toLowerCase()) ||
+            x.asset_list[0].policy_id
+              .toLowerCase()
+              .includes(searchText.value.toLowerCase())
+        )
+        .map((x) => {
+          data.push({
+            ...x,
+            asset_list: x.asset_list.map((y) => ({
+              ...y,
+              walletName: mockupData[i].name,
+            })),
+          });
+        });
+    }
+  }
+  // console.log(data);
+  return data;
 });
 </script>

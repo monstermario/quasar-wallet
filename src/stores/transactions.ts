@@ -33,5 +33,8 @@ export const useTransactionStore = defineStore('transactions', {
         (x) => x.asset_name !== asset_name
       );
     },
+    clearSelection() {
+      this.selections = [];
+    },
   },
 });
