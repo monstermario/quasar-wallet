@@ -49,10 +49,8 @@
                 </q-item-section>
 
                 <q-item-section>
-                  <q-item-label>{{ asset.asset_name }}</q-item-label>
-                  <q-item-label caption>{{
-                    route.params.classify?.toString()
-                  }}</q-item-label>
+                  <q-item-label>{{ asset.realName }}</q-item-label>
+                  <q-item-label caption>{{ asset.asset_name }}</q-item-label>
                   <q-item-label caption>{{ asset.walletName }}</q-item-label>
                 </q-item-section>
 
@@ -108,7 +106,6 @@ import { mockupData, wallets } from 'components/models';
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useTransactionStore } from 'stores/transactions';
-import { I } from 'app/dist/spa/assets/index.2f66a829';
 
 const route = useRoute();
 // const data = mockupData[0];
@@ -138,6 +135,7 @@ const walletList = computed(() => {
             ...x,
             asset_list: x.asset_list.map((y) => ({
               ...y,
+              realName: y.data.last_metadata.name,
               walletName: mockupData[i].name,
             })),
           });

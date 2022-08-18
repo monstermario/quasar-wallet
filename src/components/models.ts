@@ -180,7 +180,7 @@ export const mockupData: TypeMockupData[] = [
           {
             policy_id:
               '22ada3728e23391244a28cf51a2658bb333ab43908354888888390e2',
-            asset_name: 'asset1',
+            asset_name: '2546865526',
             quantity: '1',
             data: {
               last_metadata: {
@@ -195,7 +195,7 @@ export const mockupData: TypeMockupData[] = [
                 Twitter: 'https://twitter.com/kevyink',
                 copyright: 'Copyright: Kevy.ink',
                 image: 'ipfs://QmcWCEwtHCL862eF9MLXJJkxYzqyiUcvR1FtS3p7BW8kCD',
-                name: 'Doge 09',
+                name: 'Doge 10',
               },
               statistical_rank: 2,
               statistical_score: 0.6666666666666666,

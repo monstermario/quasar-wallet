@@ -1,5 +1,7 @@
 // app global css in SCSS form
-
+body {
+  overflow-y: hidden;
+}
 .fit-main {
   height: calc(100vh - 173px);
   overflow-y: auto;
