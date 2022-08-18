@@ -14,7 +14,7 @@
       font-size="16px"
       class="q-mr-sm q-my-sm wallet-num"
       :style="{ background: color }"
-      >{{ currentNum }}</q-avatar
+      >{{ num }}</q-avatar
     >
     <!-- <q-separator vertical></q-separator> -->
     <q-item-section class="q-pa-sm">

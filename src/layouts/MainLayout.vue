@@ -18,7 +18,13 @@
       <WalletBox :classify="classify" :wallet-num="walletNum" />
     </q-drawer>
 
-    <q-drawer side="right" v-model="rightDrawerOpen" :breakpoint="0" bordered>
+    <q-drawer
+      side="right"
+      v-model="rightDrawerOpen"
+      :breakpoint="0"
+      bordered
+      :width="292"
+    >
       <TransactionBox />
     </q-drawer>
 

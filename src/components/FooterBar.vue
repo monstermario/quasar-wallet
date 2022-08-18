@@ -1,7 +1,7 @@
 <template>
   <q-toolbar class="q-pa-none">
     <q-separator />
-    <q-list class="flex items-center justify-between full-width no-wrap">
+    <q-list class="footer-bar">
       <q-item>
         <q-item-section dense> Last Refresh: {{ lastTime }} </q-item-section>
       </q-item>
